@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
         vector<string>res;
-        map<string,int>m;
+        unordered_map<string,int>m;
         int min=INT_MAX;
         for(int i=0;i<list1.size();i++)
             m[list1[i]]=i;
