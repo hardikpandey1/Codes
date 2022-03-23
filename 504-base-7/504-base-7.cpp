@@ -1,17 +1,10 @@
 class Solution {
 public:
     string convertToBase7(int num) {
-        if(!num)
-            return "0";
-        string st="";
-        int n=abs(num);
-        while(n){
-            st+=(n%7+'0');
-            n/=7;
-        }
         if(num<0)
-            st+='-';
-        reverse(st.begin(),st.end());
-        return st;
+            return '-'+convertToBase7(-num);
+        if(num<7)
+            return to_string(num);
+        return convertToBase7(num/7)+to_string(num%7);
     }
 };
