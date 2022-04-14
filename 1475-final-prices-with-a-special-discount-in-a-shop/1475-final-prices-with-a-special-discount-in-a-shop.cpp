@@ -1,22 +1,23 @@
 class Solution {
 public:
-    vector<int> finalPrices(vector<int>& nums) {
+    vector<int> finalPrices(vector<int>& prices) {
         vector<int>v;
-        for(int i=0;i<nums.size()-1;i+=1)
-        {
-            int c=0;
-            for(int j=i+1;j<nums.size();j+=1){
-                if(nums[j]<=nums[i])
-                {
-                    v.push_back(nums[i]-nums[j]);
-                    c=1;
-                    break;
-                }
+        stack<int>s;
+        int i=prices.size()-1;
+        while(i>=0){
+            while(!s.empty() and prices[i]<s.top())
+                s.pop();
+            if(s.empty()){
+                v.push_back(prices[i]);
+                s.push(prices[i]);
             }
-            if(c==0)
-                    v.push_back(nums[i]);
+            else{
+                v.push_back(prices[i]-s.top());
+                s.push(prices[i]);
+            }
+            i-=1;
         }
-        v.push_back(nums[nums.size()-1]);
+        reverse(begin(v),end(v));
         return v;
     }
 };
