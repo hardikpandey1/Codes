@@ -4,7 +4,7 @@ public:
         int x=n&1,y=0;
         while(n){
             y=x;
-            n/=2;
+            n>>=1;
             x=n&1;
             if(y==x)
                 return false;
