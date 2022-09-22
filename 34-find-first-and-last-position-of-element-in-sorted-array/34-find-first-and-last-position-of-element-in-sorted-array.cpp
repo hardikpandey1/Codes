@@ -1,10 +1,10 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int i=0,j=nums.size()-1;
         vector<int>res(2,-1);
         if(nums.size()==0)
             return res;
+        int i=0,j=nums.size()-1;
         while(i<j){
             int mid=(i+j)/2;
             if(nums[mid]<target)
